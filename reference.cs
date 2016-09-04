@@ -198,6 +198,12 @@ static class Program
         SeparateSections();
         
         FindKthLargestInteger(1);
+        
+        SeparateSections();
+        
+        Console.WriteLine("Please press \"Enter\" when you wish to close this window.");
+        String input = null;
+        while(input == null) input = Console.ReadLine();
 	}
 	
 	
@@ -262,16 +268,17 @@ static class Program
 		int[] primeArray = new int[7]; //Array of prime numbers of some length - currently empty
 		int counter = 2; //int that counts up one at a time and finds the prime numbers
 		
-		//Outer loop loops through the indexes of primeArray
+		//Outer loop loops through the indices of primeArray
 		for(int i = 0; i < primeArray.Length; i++)
 		{
 			//Inner loop increments counter until it equals a prime number
+            //Note that the curly braces {} are not necessary for this loop because the entire loop is written on one line
 			while(!IsPrime(counter)) counter++;
 			primeArray[i] = counter;
 			counter++;
 		}
 		
-		//Loops through and outputs values of all indexes of primeArray
+		//Loops through and outputs values of all indices of primeArray
 		Console.WriteLine("Nested loop prime number testing: ");
 		for(int i = 0; i < primeArray.Length; i++)
 		{
@@ -288,7 +295,7 @@ static class Program
 		for(int i = 0; i < 10; i++) array[i] = i + 1;
 		
 		//For-Each loop -> For each value in the array, perform the function in the loop
-		//For-Each loops are READ-ONLY: Cannot change the value of the indexes in the array
+		//For-Each loops are READ-ONLY: Cannot change the value of the indices in the array
 		Console.WriteLine("For-Each loop testing: ");
         
         //"var" - variable type of the array (int, double, string, etc. - var is a general variable type)
@@ -333,7 +340,7 @@ static class Program
         //int[,] squareArray = new int[4,4];
         
         //Nested for loops to loop through the entire 2D array, row by row, column by column
-        //Outer loop loops through rows, inner loops through columns - indexes in 2D arrays always
+        //Outer loop loops through rows, inner loops through columns - indices in 2D arrays always
         //referred to using ROW then COLUMN.
         //
         //GetLength returns the length of the array at the given dimension, starting at 0 -- i.e.
@@ -478,7 +485,7 @@ static class Program
     public static void FindKthLargestInteger(int k)
     {
         int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] indexesFound = new int[k];
+        int[] indicesFound = new int[k];
         
         //Find the largest integer "k" times
         for(int j = 0; j < k; j++)
@@ -490,7 +497,7 @@ static class Program
                 bool foundI = false;
                 
                 //If the current index has previously been found to be the largest, ignore it this time
-                foreach(int num in indexesFound)
+                foreach(int num in indicesFound)
                 {
                     if(num == i) foundI = true;
                 }
@@ -503,9 +510,9 @@ static class Program
             }
             
             //Add the max that was just found to the list of previously-found maximums
-            indexesFound[j] = maxIndex;
+            indicesFound[j] = maxIndex;
         }
-        Console.WriteLine("The {0}st/rd/th largest number in the array is {1}", k, indexesFound[k - 1]);
+        Console.WriteLine("The {0}st/rd/th largest number in the array is {1}", k, indicesFound[k - 1]);
     }
 	
     
